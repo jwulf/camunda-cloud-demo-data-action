@@ -106,7 +106,10 @@ function run() {
             const customerRange = parseInt(core.getInput('customer_range') || '100', 10);
             core.setOutput('product', products_1.getProduct(productRange));
             core.setOutput('customer', customers_1.getCustomerName(customerRange));
-            core.setOutput('products', JSON.stringify(products_1.getProducts()));
+            const productsJSON = JSON.stringify(products_1.getProducts())
+                .split('"')
+                .join('/"');
+            core.setOutput('products', productsJSON);
         }
         catch (error) {
             core.setFailed(error.message);

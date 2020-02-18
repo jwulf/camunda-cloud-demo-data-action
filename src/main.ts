@@ -8,7 +8,10 @@ async function run(): Promise<void> {
     const customerRange = parseInt(core.getInput('customer_range') || '100', 10)
     core.setOutput('product', getProduct(productRange))
     core.setOutput('customer', getCustomerName(customerRange))
-    core.setOutput('products', JSON.stringify(getProducts()))
+    const productsJSON = JSON.stringify(getProducts())
+      .split('"')
+      .join('/"')
+    core.setOutput('products', productsJSON)
   } catch (error) {
     core.setFailed(error.message)
   }
