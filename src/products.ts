@@ -17,5 +17,5 @@ export function getProducts(): string[] {
 export function getProductsJSONString(): string {
   return JSON.stringify(getProducts())
     .split('"')
-    .join('\\"')
+    .join(`\\"`)
 }

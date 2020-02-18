@@ -14,5 +14,6 @@ test('test runs', () => {
 
 test('getProductsJSONString', () => {
   const str = getProductsJSONString()
+  console.log(JSON.parse(`{"products": "${str}"}`))
   expect(JSON.parse(`{"products": "${str}"}`)).toBeTruthy()
 })

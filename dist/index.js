@@ -66,7 +66,7 @@ exports.getProducts = getProducts;
 function getProductsJSONString() {
     return JSON.stringify(getProducts())
         .split('"')
-        .join('\\"');
+        .join(`\\"`);
 }
 exports.getProductsJSONString = getProductsJSONString;
 
