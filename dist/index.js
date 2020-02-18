@@ -64,9 +64,7 @@ function getProducts() {
 }
 exports.getProducts = getProducts;
 function getProductsJSONString() {
-    return JSON.stringify(getProducts())
-        .split('"')
-        .join(`\\"`);
+    return JSON.stringify(getProducts());
 }
 exports.getProductsJSONString = getProductsJSONString;
 
@@ -112,9 +110,7 @@ function run() {
             const customerRange = parseInt(core.getInput('customer_range') || '100', 10);
             core.setOutput('product', products_1.getProduct(productRange));
             core.setOutput('customer', customers_1.getCustomerName(customerRange));
-            const productsJSON = JSON.stringify(products_1.getProducts())
-                .split('"')
-                .join('\\"');
+            const productsJSON = products_1.getProductsJSONString();
             core.setOutput('products', productsJSON);
         }
         catch (error) {
