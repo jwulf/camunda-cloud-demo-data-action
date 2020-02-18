@@ -10,7 +10,7 @@ async function run(): Promise<void> {
     core.setOutput('customer', getCustomerName(customerRange))
     const productsJSON = JSON.stringify(getProducts())
       .split('"')
-      .join('/"')
+      .join('\\"')
     core.setOutput('products', productsJSON)
   } catch (error) {
     core.setFailed(error.message)

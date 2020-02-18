@@ -63,6 +63,12 @@ function getProducts() {
     return products;
 }
 exports.getProducts = getProducts;
+function getProductsJSONString() {
+    return JSON.stringify(getProducts())
+        .split('"')
+        .join('\\"');
+}
+exports.getProductsJSONString = getProductsJSONString;
 
 
 /***/ }),
@@ -108,7 +114,7 @@ function run() {
             core.setOutput('customer', customers_1.getCustomerName(customerRange));
             const productsJSON = JSON.stringify(products_1.getProducts())
                 .split('"')
-                .join('/"');
+                .join('\\"');
             core.setOutput('products', productsJSON);
         }
         catch (error) {

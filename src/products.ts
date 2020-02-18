@@ -13,3 +13,9 @@ export function getProduct(max: number): string {
 export function getProducts(): string[] {
   return products
 }
+
+export function getProductsJSONString(): string {
+  return JSON.stringify(getProducts())
+    .split('"')
+    .join('\\"')
+}
