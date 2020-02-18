@@ -51,11 +51,9 @@ module.exports =
 Object.defineProperty(exports, "__esModule", { value: true });
 const randomize_1 = __webpack_require__(284);
 const products = [
-    'Limited Edition T-shirt',
-    'Birds of Prey shoes',
+    'Limited Edition Zeebe T-shirt',
     'Camunda Escalation Ale',
-    'Real-Life BPMN Book',
-    'Dungeon Masters Guide'
+    'Real-Life BPMN Book'
 ];
 function getProduct(max) {
     return randomize_1.randomize(max, products);
