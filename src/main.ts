@@ -1,16 +1,14 @@
 import * as core from '@actions/core'
-import {wait} from './wait'
+import {getProduct, getProducts} from './products'
+import {getCustomerName} from './customers'
 
 async function run(): Promise<void> {
   try {
-    const ms: string = core.getInput('milliseconds')
-    core.debug(`Waiting ${ms} milliseconds ...`)
-
-    core.debug(new Date().toTimeString())
-    await wait(parseInt(ms, 10))
-    core.debug(new Date().toTimeString())
-
-    core.setOutput('time', new Date().toTimeString())
+    const productRange = parseInt(core.getInput('product_range') || '100', 10)
+    const customerRange = parseInt(core.getInput('customer_range') || '100', 10)
+    core.setOutput('product', getProduct(productRange))
+    core.setOutput('customer', getCustomerName(customerRange))
+    core.setOutput('products', JSON.stringify(getProducts()))
   } catch (error) {
     core.setFailed(error.message)
   }
